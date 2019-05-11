@@ -29,9 +29,8 @@ func (array *ArrayStack) IsEmpty()bool{
 
 func (array *ArrayStack) Push ( v interface{})  {
     array.top += 1
-
 	if array.top > len(array.data)-1{
-		// 对未存放过数据的切片空间
+		// 栈空间不够
     	array.data = append(array.data, v)
 	}else {
 		array.data[array.top] =v
@@ -50,12 +49,17 @@ func (array *ArrayStack) Pop() (interface{})  {
 	}
 }
 
+func (array *ArrayStack)Flush()  {
+	array.top = -1
+}
+
 func (array *ArrayStack)Print()  {
 	if array.IsEmpty(){
 		fmt.Println("Stack is empty")
 	}else{
 		for i:=array.top; i>=0; i--{
-			fmt.Printf("%d ", array.data[i])
+			fmt.Printf("%v ", array.data[i])
 		}
+		fmt.Println()
 	}
 }
