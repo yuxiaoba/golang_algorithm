@@ -2,9 +2,11 @@ package Stack
 
 import "fmt"
 
+// 模拟浏览器访问
+
 type Browser struct {
-	forwardStack Stack
-	backStack Stack
+	forwardStack Stack  // 前进
+	backStack Stack   // 后退
 }
 
 func NewBrowser() *Browser  {
@@ -14,6 +16,7 @@ func NewBrowser() *Browser  {
 	}
 }
 
+// 判断是否能前进
 func (brow *Browser) CanForwad()bool{
 	if brow.forwardStack.IsEmpty(){
 		return false
@@ -21,6 +24,7 @@ func (brow *Browser) CanForwad()bool{
 	return true
 }
 
+// 判断是否能前进
 func (brow *Browser) CanBack() bool  {
 	if brow.backStack.IsEmpty(){
 		return false
@@ -33,6 +37,7 @@ func (brow *Browser)Open(addr string){
 	fmt.Println("Open new address ", addr)
 	brow.forwardStack.Flush()
 }
+
 
 func (brow *Browser)PushBack(addr string)  {
 	brow.backStack.Push(addr)
