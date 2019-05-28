@@ -1,6 +1,9 @@
 package Recursion
 
-import "testing"
+import (
+	"testing"
+	"sort"
+)
 
 func TestRangeALL(t *testing.T) {
 	slice1 := NewRangeArray(4)
@@ -14,5 +17,7 @@ func TestRangeALL(t *testing.T) {
 	slice2.value[1] = "b"
 	slice2.value[2] = "c"
 	slice2.RangeALL(0)
+	sort.Sort()
 
 }
+
