@@ -1,8 +1,8 @@
 package LinearSort
 
 import (
-	"fmt"
 	"algorithm/Sort"
+	"fmt"
 )
 
 // 桶排序
@@ -21,6 +21,9 @@ func getMax(a []int)int{
 
 func BucketSort(a []int)  {
 	num := len(a)
+	if num <= 1{
+		return
+	}
 	max := getMax(a)
 	buckets := make([][]int, num)  // 二维切片
 
@@ -39,23 +42,28 @@ func BucketSort(a []int)  {
 			tmpPos += bucketLen
 		}
 	}
-	fmt.Println(a)
+
 }
 
 
 // 桶排序简单实现
-func BucketSort1(source []int)  {
-	var array [20]int
+func BucketSortSimple(source []int)  {
+	if len(source)<=1{
+		return
+	}
+	array := make([]int, getMax(source)+1)
 	for i:=0; i<len(source); i++{
 		array[source[i]] ++
 	}
-
+    fmt.Println(array)
+	c := make([]int,0)
 	for i:=0; i<len(array); i++{
 		for array[i] != 0 {
-			fmt.Printf("%v ", i)
+            c = append(c, i)
 			array[i] --
 		}
 	}
-	fmt.Println()
+	copy(source,c)
+
 }
 
